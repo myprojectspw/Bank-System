@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Save</title>
+</head>
+
+<body>
+
+	<div class="container">
+	
+		<h3>Create transfer between your accounts</h3>
+		<hr>
+		<div style="width: 600px; float:left; height:600px;">
+		<p class="h4 mb-4">First Account</p>
+		<form action="#" th:action="@{/employees/transferMoney}" th:object="${transfer}" method="POST">
+		
+			<!-- Add hidden form field to handle update -->
+			
+			<input type="text" th:field="*{id1}"
+					class="form-control mb-4 col-4" placeholder="Id">				
+					
+			<p class="h4 mb-4">Second Account</p>
+			
+			<input type="text" th:field="*{id2}"
+					class="form-control mb-4 col-4" placeholder="Id">
+					
+			<input type="text" th:field="*{money}"
+					class="form-control mb-4 col-4" placeholder="Money">				
+				
+			<button type="submit" class="btn btn-info col-2">Transfer</button>		
+								
+						
+		</form>
+		<a th:href="@{/employees/list}">Back to Employees List</a>
+		</div>
+		<hr>
+		
+		
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
