@@ -65,7 +65,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteById(int theId) {
-        employeeRepository.deleteById(theId);
+        // employeeRepository.deleteById(theId);
+        System.out.println(theId);
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost/emp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+                    "root", "");
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("DELETE FROM emplo WHERE id=" + theId + ";");
+        } catch (Exception e) {
+            System.out.println(e.toString() + "EXCEPTION");
+        }
     }
 
 }

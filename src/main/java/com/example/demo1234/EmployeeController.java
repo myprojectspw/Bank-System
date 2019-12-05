@@ -3,7 +3,6 @@ package com.example.demo1234;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +37,8 @@ public class EmployeeController {
             ResultSet rs = stmt.executeQuery("SELECT * FROM emplo");
             emp = new ArrayList<>();
             while (rs.next()) {
-                System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
-                emp.add(new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), "", 12));
+                // System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3));
+                emp.add(new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5)));
             }
             // con.close();
         } catch (Exception e) {
@@ -53,16 +52,21 @@ public class EmployeeController {
 
     }
 
-    @GetMapping("/list")
-    public String listEmployees(Model theModel) throws SQLException {
-        List<Employee> theEmployees = getFromDataBase();
-        theModel.addAttribute("employees", theEmployees);
-        return "employees/list-employees";
-    }
+    // @GetMapping("/list")
+    // public String listEmployees(Model theModel) throws SQLException {
+    // List<Employee> theEmployees = getFromDataBase();
+    // theModel.addAttribute("employees", theEmployees);
+    // return "employees/list-employees";
+    // }
 
-    @GetMapping("/employees/list")
+    @GetMapping("/list")
     public String listEmployeesAll(Model theModel) {
-        System.out.println("witam");
+        List<Employee> theEmployees = getFromDataBase();
+        for (Employee e : theEmployees) {
+            System.out.println(e.getEmail()
+                                .toString());
+        }
+        theModel.addAttribute("employees", theEmployees);
         return "employees/list-employees";
     }
 
@@ -80,8 +84,15 @@ public class EmployeeController {
     @GetMapping("/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("employeeId") int theId, Model theModel) {
 
+        Employee theEmployee = null;
+        for (Employee e : emp) {
+            if (e.getId() == theId) {
+                theEmployee = e;
+            }
+        }
+
         // get the employee from the service
-        Employee theEmployee = employeeService.findById(theId);
+        // Employee theEmployee = employeeService.findById(theId);
 
         // set employee as a model attribute to pre-populate the form
         theModel.addAttribute("employee", theEmployee);
@@ -202,10 +213,22 @@ public class EmployeeController {
     public String saveEmployee(@ModelAttribute("employee") Employee theEmployee) {
 
         // save the employee
+        int i = 0;
+        if (emp != null) {
+            for (Employee e : emp) {
+                if (e.getId() == i) {
+                    i++;
+                } else {
+                    break;
+                }
+            }
+        }
+        theEmployee.setId(i);
+        theEmployee.setMoney(0);
         employeeService.save(theEmployee);
 
         // use a redirect to prevent duplicate submissions
-        return "redirect:/employees/employees/list";
+        return "redirect:/employees/list";
     }
 
     @GetMapping("/delete")
