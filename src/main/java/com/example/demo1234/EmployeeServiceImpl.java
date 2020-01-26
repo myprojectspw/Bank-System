@@ -78,4 +78,34 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
     }
 
+    @Override
+    public void updateMoney(Employee theEmployee, double money) {
+        System.out.println(theEmployee);
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost/emp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+                    "root", "");
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("UPDATE emplo SET money=money+" + money + " WHERE id=" + theEmployee.getId() + ";");
+        } catch (Exception e) {
+            System.out.println(e.toString() + "EXCEPTION");
+        }
+
+    }
+
+    @Override
+    public void extractMoney(Employee theEmployee, double money) {
+        System.out.println(theEmployee);
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost/emp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+                    "root", "");
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("UPDATE emplo SET money=money-" + money + " WHERE id=" + theEmployee.getId() + ";");
+        } catch (Exception e) {
+            System.out.println(e.toString() + "EXCEPTION");
+        }
+
+    }
+
 }

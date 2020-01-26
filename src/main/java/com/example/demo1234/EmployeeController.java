@@ -142,18 +142,7 @@ public class EmployeeController {
 
     @PostMapping("/depositMoney")
     public String depositMoneyEmployee(@ModelAttribute("employee") Employee theEmployee) {
-        List<Employee> theEmployees = employeeService.findAll();
-
-        // Update employee money
-        for (Employee e : theEmployees) {
-            if (e.getFirstName()
-                 .equals(theEmployee.getFirstName())
-                && e.getLastName()
-                    .equals(theEmployee.getLastName())) {
-                e.setMoney(e.getMoney() + theEmployee.getMoney());
-                employeeService.save(e);
-            }
-        }
+        employeeService.updateMoney(theEmployee, theEmployee.getMoney());
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/employees/list";
@@ -161,18 +150,7 @@ public class EmployeeController {
 
     @PostMapping("/extractMoney")
     public String extractMoneyEmployee(@ModelAttribute("employee") Employee theEmployee) {
-        List<Employee> theEmployees = employeeService.findAll();
-
-        // Update employee money
-        for (Employee e : theEmployees) {
-            if (e.getFirstName()
-                 .equals(theEmployee.getFirstName())
-                && e.getLastName()
-                    .equals(theEmployee.getLastName())) {
-                e.setMoney(e.getMoney() - theEmployee.getMoney());
-                employeeService.save(e);
-            }
-        }
+        employeeService.extractMoney(theEmployee, theEmployee.getMoney());
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/employees/list";
