@@ -9,22 +9,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/employees")
 public class EmployeeController {
 
-    private EmployeeService employeeService;
     public List<Employee> emp;
 
-    public EmployeeController(EmployeeService theEmployeeService) {
-        employeeService = theEmployeeService;
-    }
 
     public List<Employee> getFromDataBase() {
         try {
@@ -61,13 +53,12 @@ public class EmployeeController {
 
     @GetMapping("/list")
     public String listEmployeesAll(Model theModel) {
-        List<Employee> theEmployees = getFromDataBase();
+        List<Employee> theEmployees = new ArrayList<Employee>();
         for (Employee e : theEmployees) {
             System.out.println(e.getEmail()
                                 .toString());
         }
-        theModel.addAttribute("employees", theEmployees);
-        return "employees/list-employees";
+        return theEmployees.toString();
     }
 
     @GetMapping("/showFormForAdd")
@@ -142,7 +133,7 @@ public class EmployeeController {
 
     @PostMapping("/depositMoney")
     public String depositMoneyEmployee(@ModelAttribute("employee") Employee theEmployee) {
-        employeeService.updateMoney(theEmployee, theEmployee.getMoney());
+        //employeeService.updateMoney(theEmployee, theEmployee.getMoney());
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/employees/list";
@@ -150,7 +141,7 @@ public class EmployeeController {
 
     @PostMapping("/extractMoney")
     public String extractMoneyEmployee(@ModelAttribute("employee") Employee theEmployee) {
-        employeeService.extractMoney(theEmployee, theEmployee.getMoney());
+        //employeeService.extractMoney(theEmployee, theEmployee.getMoney());
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/employees/list";
@@ -160,14 +151,14 @@ public class EmployeeController {
     public String transferMoneyEmployee(@ModelAttribute("employeeOne") Transfer id) {
 
         // Extract Money from first account
-        Employee theEmployeeExtract = employeeService.findById(id.getId1());
-        theEmployeeExtract.setMoney(theEmployeeExtract.getMoney() - id.getMoney());
-        employeeService.save(theEmployeeExtract);
+        //Employee theEmployeeExtract = employeeService.findById(id.getId1());
+        //theEmployeeExtract.setMoney(theEmployeeExtract.getMoney() - id.getMoney());
+        //employeeService.save(theEmployeeExtract);
 
         // Deposit Money form second account
-        Employee theEmployeeDeposit = employeeService.findById(id.getId2());
-        theEmployeeDeposit.setMoney(theEmployeeDeposit.getMoney() + id.getMoney());
-        employeeService.save(theEmployeeDeposit);
+        //Employee theEmployeeDeposit = employeeService.findById(id.getId2());
+        //theEmployeeDeposit.setMoney(theEmployeeDeposit.getMoney() + id.getMoney());
+        //employeeService.save(theEmployeeDeposit);
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/employees/list";
@@ -177,13 +168,13 @@ public class EmployeeController {
     public String showEmployeesFirstName(Model theModel) {
 
         // get employees from db
-        List<Employee> theEmployees = employeeService.findAll();
-        theEmployees.sort((h1, h2) -> h1.getFirstName()
-                                        .compareTo(h2.getFirstName()));
-
+        //List<Employee> theEmployees = employeeService.findAll();
+        //theEmployees.sort((h1, h2) -> h1.getFirstName()
+        //                                .compareTo(h2.getFirstName()));
+//
         // add to the spring model
-        theModel.addAttribute("employees", theEmployees);
-        System.out.println(theEmployees.toString());
+        //theModel.addAttribute("employees", theEmployees);
+        //System.out.println(theEmployees.toString());
         return "employees/list-employees";
     }
 
@@ -203,7 +194,7 @@ public class EmployeeController {
         }
         theEmployee.setId(i);
         theEmployee.setMoney(0);
-        employeeService.save(theEmployee);
+        //employeeService.save(theEmployee);
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/employees/list";
@@ -213,7 +204,7 @@ public class EmployeeController {
     public String delete(@RequestParam("employeeId") int theId) {
 
         // delete the employee
-        employeeService.deleteById(theId);
+        //employeeService.deleteById(theId);
 
         // redirect to /employees/list
         return "redirect:/employees/list";
