@@ -1,0 +1,12 @@
+<div>
+  <!-- NG If + INPUT + TOOGLE potrzebne są żeby dane wychodził od rodzica do dziecka -->
+  <div *ngIf="showMePartiallyTransfer">
+    <label for="exampleInputEmail1">From</label>
+    <input class="form-control" placeholder="Number" [(ngModel)]="newMessage.id">
+    <label for="exampleInputEmail1">To</label>
+    <input class="form-control" placeholder="Number" [(ngModel)]="newMessage.to">
+    <label for="exampleInputPassword1">Money</label>
+    <input class="form-control" placeholder="Money" [(ngModel)]="newMessage.money">
+    <button class="btn btn-primary" (click)="pickDateTransfer()">Submit</button>
+  </div>
+</div>

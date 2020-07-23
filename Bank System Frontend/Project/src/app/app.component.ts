@@ -25,6 +25,7 @@ export class AppComponent {
   showDepositForm: boolean = false;
   showExtractForm: boolean = false;
   showDeleteForm: boolean = false;
+  showTransferForm: boolean = false;
   constructor(private http: HttpClient) {}
 
   toggleChild(){
@@ -32,21 +33,32 @@ export class AppComponent {
     this.showDepositForm = false;
     this.showExtractForm = false;
     this.showDeleteForm = false;
+    this.showTransferForm = false;
   }
   toggleDeposit(){
     this.showDepositForm = !this.showDepositForm;
     this.showAddForm = false;
     this.showExtractForm = false;
     this.showDeleteForm = false;
+    this.showTransferForm = false;
   }
   toggleExtract(){
     this.showExtractForm = !this.showExtractForm;
     this.showAddForm = false;
     this.showDepositForm = false;
     this.showDeleteForm = false;
+    this.showTransferForm = false;
   }
   toggleDelete(){
     this.showDeleteForm = !this.showDeleteForm;
+    this.showExtractForm = false;
+    this.showAddForm = false;
+    this.showDepositForm = false;
+    this.showTransferForm = false;
+  }
+  toggleTransfer(){
+    this.showTransferForm = !this.showTransferForm;
+    this.showDeleteForm = false;
     this.showExtractForm = false;
     this.showAddForm = false;
     this.showDepositForm = false;
@@ -79,6 +91,12 @@ export class AppComponent {
   deleteAccount(date: any):void {
     this.newMessage = date;
     this.delete();
+  }
+
+  transferAccount(date: any):void {
+    this.newMessage = date;
+    //console.log(this.newMessage);
+    this.update();
   }
 
   send() {

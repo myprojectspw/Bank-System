@@ -56,6 +56,15 @@ public class EmployeeController {
         {
             emp.setMoney(emp.getMoney() - Integer.valueOf(body.get("money")));
         }
+        else if(Boolean.valueOf(body.get("transfer")))
+        {
+            Employee from = employeeRepository.findOne(blogId);
+            Employee to = employeeRepository.findOne(Integer.valueOf(body.get("to")));
+            from.setMoney(from.getMoney() - Integer.valueOf(body.get("money")));
+            to.setMoney(to.getMoney() + Integer.valueOf(body.get("money")));
+            employeeRepository.save(from);
+            employeeRepository.save(to);
+        }
         employeeRepository.save(emp);
 //        emp.setName(body.get("name"));
 //        emp.setSurname(body.get("surname"));
