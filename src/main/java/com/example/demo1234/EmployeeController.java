@@ -64,10 +64,10 @@ public class EmployeeController {
     }
 
     @DeleteMapping("emp/{id}")
-    public boolean delete(@PathVariable String id) {
+    public List<Employee> delete(@PathVariable String id) {
         int empId = Integer.parseInt(id);
         employeeRepository.delete(empId);
-        return true;
+        return employeeRepository.findAll();
     }
 
 }

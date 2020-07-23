@@ -7,13 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { DepositAccountComponent } from './deposit-account/deposit-account.component';
 import { ExtractAccountComponent } from './extract-account/extract-account.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateAccountComponent,
     DepositAccountComponent,
-    ExtractAccountComponent
+    ExtractAccountComponent,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule

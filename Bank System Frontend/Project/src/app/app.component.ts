@@ -24,20 +24,30 @@ export class AppComponent {
   showAddForm: boolean = false;
   showDepositForm: boolean = false;
   showExtractForm: boolean = false;
+  showDeleteForm: boolean = false;
   constructor(private http: HttpClient) {}
 
   toggleChild(){
     this.showAddForm = !this.showAddForm;
     this.showDepositForm = false;
     this.showExtractForm = false;
+    this.showDeleteForm = false;
   }
   toggleDeposit(){
     this.showDepositForm = !this.showDepositForm;
     this.showAddForm = false;
     this.showExtractForm = false;
+    this.showDeleteForm = false;
   }
   toggleExtract(){
     this.showExtractForm = !this.showExtractForm;
+    this.showAddForm = false;
+    this.showDepositForm = false;
+    this.showDeleteForm = false;
+  }
+  toggleDelete(){
+    this.showDeleteForm = !this.showDeleteForm;
+    this.showExtractForm = false;
     this.showAddForm = false;
     this.showDepositForm = false;
   }
@@ -63,8 +73,12 @@ export class AppComponent {
 
   extractAccount(date: any):void {
     this.newMessage = date;
-    //console.log("Extract " + this.newMessage.id)
     this.update();
+  }
+
+  deleteAccount(date: any):void {
+    this.newMessage = date;
+    this.delete();
   }
 
   send() {
@@ -77,5 +91,12 @@ export class AppComponent {
     this.http.put('/api/emp/' + this.newMessage.id, this.newMessage).subscribe((data:Array<Employee>)=>{
       this.messages = data;
     });
+  }
+
+  delete() {
+    this.http.delete('/api/emp/' + this.newMessage.id).subscribe((data:Array<Employee>)=>{
+      this.messages = data;
+    });
+
   }
 }

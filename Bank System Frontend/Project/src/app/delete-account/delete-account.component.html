@@ -1,0 +1,8 @@
+<div>
+  <!-- NG If + INPUT + TOOGLE potrzebne są żeby dane wychodził od rodzica do dziecka -->
+  <div *ngIf="showMePartiallyDelete">
+    <label for="exampleInputEmail1">Number</label>
+    <input class="form-control" placeholder="Number" [(ngModel)]="newMessage.id">
+    <button class="btn btn-primary" (click)="pickDateDelete()">Submit</button>
+  </div>
+</div>
