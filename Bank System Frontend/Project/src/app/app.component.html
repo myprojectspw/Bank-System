@@ -1,0 +1,44 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div style="text-align:center">
+  <h1>
+    Bank accounts service
+  </h1>
+  
+</div>
+<div>
+  <ul>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Number</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Saldo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let msg of messages">
+              <td>{{msg.id}} </td>
+              <td>{{msg.name}} </td>
+              <td>{{msg.surname}} </td>
+              <td>{{msg.email}} </td>
+              <td>{{msg.money}} </td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <!-- Functions -->
+      <div style="color:blue;">
+        <button class="btn btn-primary" style="margin:5px;" (click)="toggleChild()">Add account</button>
+        <button class="btn btn-primary" style="margin:5px;">Delete account</button>
+        <button class="btn btn-primary" style="margin:5px;">Change account info</button>
+        <button class="btn btn-primary" style="margin:5px;">Transfer money</button>
+        <button class="btn btn-primary" style="margin:5px;">Deposit money</button>
+        <button class="btn btn-primary" style="margin:5px;">Extract money</button>
+      </div>
+      <app-create-account [showMePartially]="showAddForm" (onDatePicked)="doSomething($event)"></app-create-account>
+</ul>
+</div>
+

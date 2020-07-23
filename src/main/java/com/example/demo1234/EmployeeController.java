@@ -50,6 +50,7 @@ public class EmployeeController {
         Employee emp = employeeRepository.findOne(blogId);
         emp.setName(body.get("name"));
         emp.setSurname(body.get("surname"));
+        emp.setEmail(body.get("email"));
         return employeeRepository.save(emp);
     }
 
