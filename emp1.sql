@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 20 Lip 2020, 23:49
+-- Czas generowania: 24 Lip 2020, 00:27
 -- Wersja serwera: 10.1.38-MariaDB
 -- Wersja PHP: 7.1.28
 
@@ -41,8 +41,13 @@ CREATE TABLE `emp1` (
 --
 
 INSERT INTO `emp1` (`id`, `name`, `surname`, `email`, `money`) VALUES
-(2, 'Adam', 'Nikolas', 'adam@wp.pl', 4500),
-(3, 'Marta', 'Nikolas', 'marta@o2.pl', 3500);
+(2, 'Adam', 'Nikolas', 'adam@wp.pl', 390),
+(3, 'Nikola', 'Nikolas', 'nikola@wp.pl', 4530),
+(12, 'Pablo', 'Wyklad', 'wy@wp.pl', 1271),
+(15, 'alek', 'waflowy', 'fajny@wp.pl', 0),
+(17, 'Monika', 'Kadlubek', 'kad@wp.pl', 1270),
+(18, 'Monika', 'Alfa', 'kad23@wp.pl', 0),
+(19, 'Ada', 'Rada', '23', 1270);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -62,7 +67,7 @@ ALTER TABLE `emp1`
 -- AUTO_INCREMENT dla tabeli `emp1`
 --
 ALTER TABLE `emp1`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
