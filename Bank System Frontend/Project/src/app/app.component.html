@@ -35,10 +35,11 @@
         <button class="btn btn-primary" style="margin:5px;">Delete account</button>
         <button class="btn btn-primary" style="margin:5px;">Change account info</button>
         <button class="btn btn-primary" style="margin:5px;">Transfer money</button>
-        <button class="btn btn-primary" style="margin:5px;">Deposit money</button>
+        <button class="btn btn-primary" style="margin:5px;" (click)="toggleDeposit()">Deposit money</button>
         <button class="btn btn-primary" style="margin:5px;">Extract money</button>
       </div>
-      <app-create-account [showMePartially]="showAddForm" (onDatePicked)="doSomething($event)"></app-create-account>
+      <app-create-account [showMePartially]="showAddForm" (onDatePicked)="createAccount($event)"></app-create-account>
+      <app-deposit-account [showMePartiallyDeposit]="showDepositForm" (onDatePickedDeposit)="depositAccount($event)"></app-deposit-account>
 </ul>
 </div>
 

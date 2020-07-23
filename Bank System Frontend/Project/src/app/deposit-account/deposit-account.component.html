@@ -1,0 +1,10 @@
+<div>
+  <!-- NG If + INPUT + TOOGLE potrzebne są żeby dane wychodził od rodzica do dziecka -->
+  <div *ngIf="showMePartiallyDeposit">
+    <label for="exampleInputEmail1">Number</label>
+    <input class="form-control" placeholder="Number" [(ngModel)]="newMessage.id">
+    <label for="exampleInputPassword1">Money</label>
+    <input class="form-control" placeholder="Money" [(ngModel)]="newMessage.money">
+    <button class="btn btn-primary" (click)="pickDateDeposit()">Submit</button>
+  </div>
+</div>

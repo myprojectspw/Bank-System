@@ -44,14 +44,23 @@ public class EmployeeController {
     }
 
     @PutMapping("/emp/{id}")
-    public Employee update(@PathVariable String id, @RequestBody Map<String, String> body) {
+    public List<Employee> update(@PathVariable String id, @RequestBody Map<String, String> body) {
         int blogId = Integer.parseInt(id);
         // getting blog
         Employee emp = employeeRepository.findOne(blogId);
-        emp.setName(body.get("name"));
-        emp.setSurname(body.get("surname"));
-        emp.setEmail(body.get("email"));
-        return employeeRepository.save(emp);
+        if(Boolean.valueOf(body.get("deposit")))
+        {
+            emp.setMoney(emp.getMoney() + Integer.valueOf(body.get("money")));
+        }
+        else
+        {
+
+        }
+        employeeRepository.save(emp);
+//        emp.setName(body.get("name"));
+//        emp.setSurname(body.get("surname"));
+//        emp.setEmail(body.get("email"));
+        return employeeRepository.findAll();
     }
 
     @DeleteMapping("emp/{id}")

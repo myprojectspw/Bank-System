@@ -11,8 +11,6 @@ interface Employee {
   money: number;
 }
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,13 +20,17 @@ export class AppComponent {
   time = 'xyz';
   messages = Array<Employee>();
   headElements = ['ID', 'Name', 'Surname', 'Email', 'Konto'];
-  newMessage={name: "", surname: "", email: ""};
+  newMessage={id: 0, name: "", surname: "", email: ""};
   showAddForm: boolean = false;
+  showDepositForm: boolean = false;
   constructor(private http: HttpClient) {}
 
   toggleChild(){
     this.showAddForm = !this.showAddForm;
-}
+  }
+  toggleDeposit(){
+    this.showDepositForm = !this.showDepositForm;
+  }
 
   ngOnInit(): void {
     this.http.get('/api/emp', {responseType: 'text'}).subscribe(data=>{
@@ -39,13 +41,24 @@ export class AppComponent {
     });
   }
 
-  public doSomething(date: any):void {
+  createAccount(date: any):void {
     this.newMessage = date;
     this.send();
   }
 
+  depositAccount(date: any):void {
+    this.newMessage = date;
+    this.update();
+  }
+
   send() {
     this.http.post('/api/emp', this.newMessage).subscribe((data:Array<Employee>)=>{
+      this.messages = data;
+    });
+  }
+
+  update() {
+    this.http.put('/api/emp/' + this.newMessage.id, this.newMessage).subscribe((data:Array<Employee>)=>{
       this.messages = data;
     });
   }

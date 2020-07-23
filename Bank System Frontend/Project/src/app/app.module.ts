@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { send } from 'process';
 import { FormsModule } from '@angular/forms';
 import { CreateAccountComponent } from './create-account/create-account.component';
+import { DepositAccountComponent } from './deposit-account/deposit-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    DepositAccountComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule
