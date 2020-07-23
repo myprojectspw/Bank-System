@@ -52,9 +52,9 @@ public class EmployeeController {
         {
             emp.setMoney(emp.getMoney() + Integer.valueOf(body.get("money")));
         }
-        else
+        else if(Boolean.valueOf(body.get("extract")))
         {
-
+            emp.setMoney(emp.getMoney() - Integer.valueOf(body.get("money")));
         }
         employeeRepository.save(emp);
 //        emp.setName(body.get("name"));

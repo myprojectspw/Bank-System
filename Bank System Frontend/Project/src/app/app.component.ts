@@ -23,13 +23,23 @@ export class AppComponent {
   newMessage={id: 0, name: "", surname: "", email: ""};
   showAddForm: boolean = false;
   showDepositForm: boolean = false;
+  showExtractForm: boolean = false;
   constructor(private http: HttpClient) {}
 
   toggleChild(){
     this.showAddForm = !this.showAddForm;
+    this.showDepositForm = false;
+    this.showExtractForm = false;
   }
   toggleDeposit(){
     this.showDepositForm = !this.showDepositForm;
+    this.showAddForm = false;
+    this.showExtractForm = false;
+  }
+  toggleExtract(){
+    this.showExtractForm = !this.showExtractForm;
+    this.showAddForm = false;
+    this.showDepositForm = false;
   }
 
   ngOnInit(): void {
@@ -48,6 +58,12 @@ export class AppComponent {
 
   depositAccount(date: any):void {
     this.newMessage = date;
+    this.update();
+  }
+
+  extractAccount(date: any):void {
+    this.newMessage = date;
+    //console.log("Extract " + this.newMessage.id)
     this.update();
   }
 

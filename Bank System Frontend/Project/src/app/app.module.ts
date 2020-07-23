@@ -6,12 +6,14 @@ import { send } from 'process';
 import { FormsModule } from '@angular/forms';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { DepositAccountComponent } from './deposit-account/deposit-account.component';
+import { ExtractAccountComponent } from './extract-account/extract-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateAccountComponent,
-    DepositAccountComponent
+    DepositAccountComponent,
+    ExtractAccountComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule
