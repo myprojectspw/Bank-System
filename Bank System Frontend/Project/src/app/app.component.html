@@ -33,7 +33,7 @@
       <div style="color:blue;">
         <button class="btn btn-primary" style="margin:5px;" (click)="toggleChild()">Add account</button>
         <button class="btn btn-primary" style="margin:5px;" (click)="toggleDelete()">Delete account</button>
-        <button class="btn btn-primary" style="margin:5px;">Change account info</button>
+        <button class="btn btn-primary" style="margin:5px;" (click)="toggleEdit()">Change account info</button>
         <button class="btn btn-primary" style="margin:5px;" (click)="toggleTransfer()">Transfer money</button>
         <button class="btn btn-primary" style="margin:5px;" (click)="toggleDeposit()">Deposit money</button>
         <button class="btn btn-primary" style="margin:5px;" (click)="toggleExtract()">Extract money</button>
@@ -43,6 +43,7 @@
       <app-extract-account [showMePartiallyExtract]="showExtractForm" (onDatePickedExtract)="extractAccount($event)"></app-extract-account>
       <app-delete-account [showMePartiallyDelete]="showDeleteForm" (onDatePickedDelete)="deleteAccount($event)"></app-delete-account>
       <app-transfer-account [showMePartiallyTransfer]="showTransferForm" (onDatePickedTransfer)="transferAccount($event)"></app-transfer-account>
+      <app-edit-account [showMePartiallyEdit]="showEditForm" (onDatePickedEdit)="editAccount($event)"></app-edit-account>
     </ul>
 </div>
 

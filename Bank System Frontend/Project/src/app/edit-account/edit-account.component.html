@@ -1,0 +1,14 @@
+<div>
+  <!-- NG If + INPUT + TOOGLE potrzebne są żeby dane wychodził od rodzica do dziecka -->
+  <div *ngIf="showMePartiallyEdit">
+    <label for="exampleInputEmail1">Number</label>
+    <input class="form-control" placeholder="Number" [(ngModel)]="newMessage.id">
+    <label for="exampleInputEmail1">Name</label>
+    <input class="form-control" placeholder="Name" [(ngModel)]="newMessage.name">
+    <label for="exampleInputPassword1">Surname</label>
+    <input class="form-control" placeholder="Surname" [(ngModel)]="newMessage.surname">
+    <label for="exampleInputPassword1">E-mail</label>
+    <input class="form-control" placeholder="Email" [(ngModel)]="newMessage.email">
+    <button class="btn btn-primary" (click)="pickDateEdit()">Submit</button>
+  </div> 
+</div>

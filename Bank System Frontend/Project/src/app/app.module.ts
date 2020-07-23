@@ -9,6 +9,7 @@ import { DepositAccountComponent } from './deposit-account/deposit-account.compo
 import { ExtractAccountComponent } from './extract-account/extract-account.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { TransferAccountComponent } from './transfer-account/transfer-account.component';
+import { EditAccountComponent } from './edit-account/edit-account.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TransferAccountComponent } from './transfer-account/transfer-account.co
     DepositAccountComponent,
     ExtractAccountComponent,
     DeleteAccountComponent,
-    TransferAccountComponent
+    TransferAccountComponent,
+    EditAccountComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule

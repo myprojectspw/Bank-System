@@ -26,6 +26,7 @@ export class AppComponent {
   showExtractForm: boolean = false;
   showDeleteForm: boolean = false;
   showTransferForm: boolean = false;
+  showEditForm: boolean = false;
   constructor(private http: HttpClient) {}
 
   toggleChild(){
@@ -34,6 +35,7 @@ export class AppComponent {
     this.showExtractForm = false;
     this.showDeleteForm = false;
     this.showTransferForm = false;
+    this.showEditForm = false;
   }
   toggleDeposit(){
     this.showDepositForm = !this.showDepositForm;
@@ -41,6 +43,7 @@ export class AppComponent {
     this.showExtractForm = false;
     this.showDeleteForm = false;
     this.showTransferForm = false;
+    this.showEditForm = false;
   }
   toggleExtract(){
     this.showExtractForm = !this.showExtractForm;
@@ -48,6 +51,7 @@ export class AppComponent {
     this.showDepositForm = false;
     this.showDeleteForm = false;
     this.showTransferForm = false;
+    this.showEditForm = false;
   }
   toggleDelete(){
     this.showDeleteForm = !this.showDeleteForm;
@@ -55,9 +59,19 @@ export class AppComponent {
     this.showAddForm = false;
     this.showDepositForm = false;
     this.showTransferForm = false;
+    this.showEditForm = false;
   }
   toggleTransfer(){
     this.showTransferForm = !this.showTransferForm;
+    this.showDeleteForm = false;
+    this.showExtractForm = false;
+    this.showAddForm = false;
+    this.showDepositForm = false;
+    this.showEditForm = false;
+  }
+  toggleEdit(){
+    this.showEditForm = !this.showEditForm;
+    this.showTransferForm = false;
     this.showDeleteForm = false;
     this.showExtractForm = false;
     this.showAddForm = false;
@@ -95,7 +109,11 @@ export class AppComponent {
 
   transferAccount(date: any):void {
     this.newMessage = date;
-    //console.log(this.newMessage);
+    this.update();
+  }
+
+  editAccount(date: any):void {
+    this.newMessage = date;
     this.update();
   }
 

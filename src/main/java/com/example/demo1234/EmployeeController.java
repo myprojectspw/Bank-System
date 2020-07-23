@@ -46,7 +46,7 @@ public class EmployeeController {
     @PutMapping("/emp/{id}")
     public List<Employee> update(@PathVariable String id, @RequestBody Map<String, String> body) {
         int blogId = Integer.parseInt(id);
-        // getting blog
+
         Employee emp = employeeRepository.findOne(blogId);
         if(Boolean.valueOf(body.get("deposit")))
         {
@@ -65,10 +65,13 @@ public class EmployeeController {
             employeeRepository.save(from);
             employeeRepository.save(to);
         }
+        else
+        {
+            emp.setName(body.get("name"));
+            emp.setSurname(body.get("surname"));
+            emp.setEmail(body.get("email"));
+        }
         employeeRepository.save(emp);
-//        emp.setName(body.get("name"));
-//        emp.setSurname(body.get("surname"));
-//        emp.setEmail(body.get("email"));
         return employeeRepository.findAll();
     }
 
