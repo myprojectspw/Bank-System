@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "https://thawing-river-01959.herokuapp.com/")
 @RequestMapping("/api")
 public class EmployeeController {
 
