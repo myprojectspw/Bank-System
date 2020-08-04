@@ -14,29 +14,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-@RestController
 @CrossOrigin(origins = "https://thawing-river-01959.herokuapp.com/")
+@RestController
 @RequestMapping("/api")
 public class EmployeeController {
 
     @Autowired
     EmployeeRepository employeeRepository;
 
-    @CrossOrigin
     @GetMapping("/emp")
     public List<Employee> listEmployeesAll() {
         return employeeRepository.findAll();
     }
 
-    @CrossOrigin
     @GetMapping("/emp/{id}")
     public Employee getOneEmployee(@PathVariable String id) {
         int blogId = Integer.parseInt(id);
         return employeeRepository.findOne(blogId);
     }
 
-    @CrossOrigin
     @PostMapping("/emp")
     public List<Employee> create(@RequestBody Map<String, String> body) {
         int id = Integer.valueOf(body.get("id"));
@@ -48,7 +44,6 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
-    @CrossOrigin
     @PutMapping("/emp/{id}")
     public List<Employee> update(@PathVariable String id, @RequestBody Map<String, String> body) {
         int blogId = Integer.parseInt(id);
@@ -81,7 +76,6 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
-    @CrossOrigin
     @DeleteMapping("emp/{id}")
     public List<Employee> delete(@PathVariable String id) {
         int empId = Integer.parseInt(id);
