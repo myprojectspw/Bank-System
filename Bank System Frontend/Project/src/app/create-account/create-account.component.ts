@@ -18,7 +18,7 @@ export class CreateAccountComponent implements OnInit {
   @Input() showMePartially: boolean;
   @Output() onDatePicked: EventEmitter<any> = new EventEmitter<any>();
   constructor(private http: HttpClient) { }
-  newMessage={name: "", surname: "", email: ""};
+  newMessage={id: 0, name: "", surname: "", email: ""};
   messages = Array<Employee>();
   ngOnInit() {
   }

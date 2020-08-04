@@ -1,6 +1,8 @@
 <div>
   <!-- NG If + INPUT + TOOGLE potrzebne są żeby dane wychodził od rodzica do dziecka -->
   <div *ngIf="showMePartially">
+    <label for="exampleInputId">Name</label>
+    <input class="form-control" placeholder="Id" [(ngModel)]="newMessage.id">
     <label for="exampleInputEmail1">Name</label>
     <input class="form-control" placeholder="Imie" [(ngModel)]="newMessage.name">
     <label for="exampleInputPassword1">Surname</label>

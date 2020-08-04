@@ -35,11 +35,12 @@ public class EmployeeController {
 
     @PostMapping("/emp")
     public List<Employee> create(@RequestBody Map<String, String> body) {
+        int id = Integer.valueOf(body.get("id"));
         String name = body.get("name");
         String surname = body.get("surname");
         String email = body.get("email");
         int money = 0;
-        employeeRepository.save(new Employee(name, surname, email, money));
+        employeeRepository.save(new Employee(id, name, surname, email, money));
         return employeeRepository.findAll();
     }
 

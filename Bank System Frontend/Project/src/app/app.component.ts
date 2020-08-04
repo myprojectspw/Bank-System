@@ -87,6 +87,25 @@ export class AppComponent {
     });
   }
 
+  send() {
+    this.http.post('/api/emp', this.newMessage).subscribe((data:Array<Employee>)=>{
+      this.messages = data;
+    });
+  }
+
+  update() {
+    this.http.put('/api/emp/' + this.newMessage.id, this.newMessage).subscribe((data:Array<Employee>)=>{
+      this.messages = data;
+    });
+  }
+
+  delete() {
+    this.http.delete('/api/emp/' + this.newMessage.id).subscribe((data:Array<Employee>)=>{
+      this.messages = data;
+    });
+
+  }
+
   createAccount(date: any):void {
     this.newMessage = date;
     this.send();
@@ -117,22 +136,5 @@ export class AppComponent {
     this.update();
   }
 
-  send() {
-    this.http.post('/api/emp', this.newMessage).subscribe((data:Array<Employee>)=>{
-      this.messages = data;
-    });
-  }
-
-  update() {
-    this.http.put('/api/emp/' + this.newMessage.id, this.newMessage).subscribe((data:Array<Employee>)=>{
-      this.messages = data;
-    });
-  }
-
-  delete() {
-    this.http.delete('/api/emp/' + this.newMessage.id).subscribe((data:Array<Employee>)=>{
-      this.messages = data;
-    });
-
-  }
+  
 }
