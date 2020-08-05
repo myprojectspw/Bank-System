@@ -28,12 +28,14 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
+    @CrossOrigin(origins = "https://thawing-river-01959.herokuapp.com")
     @GetMapping("/emp/{id}")
     public Employee getOneEmployee(@PathVariable String id) {
         int blogId = Integer.parseInt(id);
         return employeeRepository.findOne(blogId);
     }
 
+    @CrossOrigin(origins = "https://thawing-river-01959.herokuapp.com")
     @PostMapping("/emp")
     public List<Employee> create(@RequestBody Map<String, String> body) {
         int id = Integer.valueOf(body.get("id"));
@@ -45,6 +47,7 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
+    @CrossOrigin(origins = "https://thawing-river-01959.herokuapp.com")
     @PutMapping("/emp/{id}")
     public List<Employee> update(@PathVariable String id, @RequestBody Map<String, String> body) {
         int blogId = Integer.parseInt(id);
@@ -77,6 +80,7 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
+    @CrossOrigin(origins = "https://thawing-river-01959.herokuapp.com")
     @DeleteMapping("emp/{id}")
     public List<Employee> delete(@PathVariable String id) {
         int empId = Integer.parseInt(id);
