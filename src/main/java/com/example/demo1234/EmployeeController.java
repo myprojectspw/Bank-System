@@ -22,7 +22,7 @@ public class EmployeeController {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    @CrossOrigin(origins = "https://thawing-river-01959.herokuapp.com/api/emp")
+    @CrossOrigin(origins = "https://thawing-river-01959.herokuapp.com")
     @GetMapping("/emp")
     public List<Employee> listEmployeesAll() {
         return employeeRepository.findAll();
