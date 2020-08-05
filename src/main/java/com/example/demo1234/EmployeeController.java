@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-@CrossOrigin(origins = "https://thawing-river-01959.herokuapp.com/")
+
 @RestController
 @RequestMapping("/api")
 public class EmployeeController {
@@ -22,6 +22,7 @@ public class EmployeeController {
     @Autowired
     EmployeeRepository employeeRepository;
 
+    @CrossOrigin(origins = "https://thawing-river-01959.herokuapp.com/api/emp")
     @GetMapping("/emp")
     public List<Employee> listEmployeesAll() {
         return employeeRepository.findAll();
